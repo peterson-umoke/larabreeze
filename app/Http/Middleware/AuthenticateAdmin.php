@@ -7,8 +7,7 @@ use Auth;
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class AuthenticateAdmin
-//class AuthenticateAdmin extends Middleware
+class AuthenticateAdmin extends Middleware
 {
     /**
      * Handle an incoming request.
@@ -22,7 +21,7 @@ class AuthenticateAdmin
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::guard('admin')->check()) {
+        if ($this->auth->guard('admin')->check()) {
             return redirect()->route('admin.login');
         }
 
