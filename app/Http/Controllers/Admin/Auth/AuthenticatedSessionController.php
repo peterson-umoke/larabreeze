@@ -46,9 +46,9 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('admin')->logout();
 
-//        $request->session()->invalidate();
+        $request->user('admin')->session()->invalidate();
 
-//        $request->session()->regenerateToken();
+        $request->user('admin')->session()->regenerateToken();
 
         return redirect('/');
     }
