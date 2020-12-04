@@ -29,7 +29,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(AdminLoginRequest $request)
     {
-        dd($request);
         $request->user('admin')->authenticate();
         $request->user('admin')->session()->regenerate();
 
