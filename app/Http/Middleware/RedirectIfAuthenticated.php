@@ -12,27 +12,24 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  ...$guards
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
+     * @param string|null ...$guards
      * @return mixed
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-//        $guards = empty($guards) ? [null] : $guards;
+        $guards = empty($guards) ? [null] : $guards;
 
-//        foreach ($guards as $guard) {
-//            if (Auth::guard($guard)->check()) {
-//                return redirect(RouteServiceProvider::HOME);
-//            }
-//        }
-
-        if (Auth::guard('admin')->check()) {
-            return redirect(RouteServiceProvider::HOME_ADMIN);
-        }
-
-        if (Auth::guard('web')->check()) {
-            return redirect(RouteServiceProvider::HOME);
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                switch ($guard):
+                    case 'admin':
+                        return redirect(RouteServiceProvider::HOME_ADMIN);
+                    default:
+                        return redirect(RouteServiceProvider::HOME);
+                endswitch;
+            }
         }
 
         return $next($request);
