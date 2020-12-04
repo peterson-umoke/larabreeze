@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(LoginRequest $request)
+    public function store(AdminLoginRequest $request)
     {
         $request->user('admin')->authenticate();
         $request->user('admin')->session()->regenerate();
