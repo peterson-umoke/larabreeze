@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Http\Auth\Requests\AdminLoginRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminLoginRequest;
-use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
