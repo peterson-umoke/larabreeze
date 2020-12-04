@@ -10,6 +10,9 @@
     "require": {
         "akaunting/money": "^1.2.0",
         "barryvdh/laravel-dompdf": "^0.8.6",
+        "blade-ui-kit/blade-icons": "^0.5.1",
+        "blade-ui-kit/blade-ui-kit": "^0.2.0",
+        "davidhsianturi/blade-bootstrap-icons": "^v0.5.0",
         "doctrine/dbal": "~2.3",
         "ext-curl": "*",
         "ext-intl": "*",
@@ -35,7 +38,7 @@
         "spatie/laravel-query-builder": "^3.3.4",
         "spatie/laravel-sluggable": "^2.2.2",
         "tightenco/ziggy": "^0.9.4",
-        "yoeunes/toastr": "^v1.0"
+        "yoeunes/toastr": "^v1.2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

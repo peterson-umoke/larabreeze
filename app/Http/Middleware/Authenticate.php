@@ -16,6 +16,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request, ... $guards)
     {
+        dd($guards);
         if (!$request->expectsJson()) {
             switch (current($guards)):
                 case 'admin':
