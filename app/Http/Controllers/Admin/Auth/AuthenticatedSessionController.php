@@ -17,22 +17,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        return view('admin.auth.login');
     }
 
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @param \App\Http\Requests\Auth\LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $request->user('admin')->authenticate();
 
-        $request->session()->regenerate();
+//        $request->session()->regenerate();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME_ADMIN);
     }
 
     /**
@@ -43,11 +44,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
-        $request->session()->invalidate();
+//        $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+//        $request->session()->regenerateToken();
 
         return redirect('/');
     }
