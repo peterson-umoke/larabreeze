@@ -18,14 +18,12 @@ Route::prefix('admin')->name("admin.")->group(function () {
     Route::post('/register', [RegisteredUserController::class, 'store'])
         ->middleware('guest:admin');
 
-    Route::middleware(['auth.admin:admin'])->group(function() {
-        Route::get('/login', [AuthenticatedSessionController::class, 'create'])
-            ->middleware('guest:admin')
-            ->name('login');
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+        ->middleware('guest:admin')
+        ->name('login');
 
-        Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-            ->middleware('guest:admin');
-    });
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+        ->middleware('guest:admin');
 
     Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
         ->middleware('guest:admin')

@@ -29,9 +29,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(AdminLoginRequest $request)
     {
-        $request->user()->authenticate();
+        $request->user('admin')->authenticate();
 
-        $request->user()->session()->regenerate();
+        $request->user('admin')->session()->regenerate();
 
         return redirect(RouteServiceProvider::HOME_ADMIN);
     }
