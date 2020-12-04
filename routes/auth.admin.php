@@ -18,7 +18,7 @@ Route::prefix('admin')->name("admin.")->group(function () {
     Route::post('/register', [RegisteredUserController::class, 'store'])
         ->middleware('guest:admin');
 
-    Route::middleware(['web'])->group(function() {
+    Route::middleware(['auth.admin:admin'])->group(function() {
         Route::get('/login', [AuthenticatedSessionController::class, 'create'])
             ->middleware('guest:admin')
             ->name('login');
