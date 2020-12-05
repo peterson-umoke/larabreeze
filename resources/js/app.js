@@ -1,23 +1,22 @@
 require('./bootstrap');
 
 // require('alpinejs');
+
 require('moment');
 
-import Vue from 'vue';
+import { App, plugin } from '@inertiajs/inertia-vue'
+import Vue from 'vue'
 
-Vue.mixin({ methods: { route } });
-Vue.use(InertiaApp);
-Vue.use(InertiaForm);
-Vue.use(PortalVue);
+Vue.use(plugin)
 
-const app = document.getElementById('app');
+const el = document.getElementById('app')
 
 new Vue({
-    render: (h) =>
-        h(InertiaApp, {
-            props: {
-                initialPage: JSON.parse(app.dataset.page),
-                resolveComponent: (name) => require(`./Pages/${name}`).default,
-            },
-        }),
-}).$mount(app);
+    render: h => h(App, {
+        props: {
+            initialPage: JSON.parse(el.dataset.page),
+            resolveComponent: name => require(`./Pages/${name}`).default,
+        },
+    }),
+}).$mount(el)
+
