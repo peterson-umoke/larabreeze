@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/auth/user.php';
-require __DIR__ . '/auth/admin.php';
-require __DIR__ . '/web/admin.php';
-require __DIR__ . '/web/user.php';
+require __DIR__ . '/auth/user.auth.php';
+require __DIR__ . '/auth/admin.auth.php';
+require __DIR__ . '/web/admin.web.php';
+require __DIR__ . '/web/user.web.php';
