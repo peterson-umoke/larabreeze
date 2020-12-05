@@ -4,3 +4,11 @@
         <p>Hello Peterson, welcome to your first Inertia app!</p>
     </div>
 </template>
+
+<script>
+
+export default {
+    name: "Index",
+    components: {}
+}
+</script>

@@ -7,7 +7,6 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
 </head>
 <body>
-{{--@inertia--}}
-<div id="app"></div>
+@inertia
 </body>
 </html>

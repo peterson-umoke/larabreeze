@@ -17,4 +17,4 @@ new Vue({
         },
     }),
 }).$mount(el)
-InertiaProgress.init()
+InertiaProgress.init();
