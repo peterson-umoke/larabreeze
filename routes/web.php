@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/auth/user.auth.php';
-require __DIR__ . '/auth/admin.auth.php';
-require __DIR__ . '/web/admin.web.php';
-require __DIR__ . '/web/user.web.php';
+Route::name('user.')->group(function () {
+    require __DIR__ . '/auth/user.auth.php';
+    require __DIR__ . '/web/user.web.php';
+});
+Route::name('admin.')->prefix('admin')->group(function () {
+    require __DIR__ . '/auth/admin.auth.php';
+    require __DIR__ . '/web/admin.web.php';
+});
