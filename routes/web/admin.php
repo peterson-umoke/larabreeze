@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes For Admin
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/auth/user.php';
-require __DIR__ . '/auth/admin.php';
-require __DIR__ . '/web/admin.php';
-require __DIR__ . '/web/user.php';
+Route::prefix('admin')->name("admin.")->group(function () {
+    Route::get('/', function () {
+        return view('admin.welcome');
+    });
+
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->middleware(['auth'])->name('dashboard');
+});

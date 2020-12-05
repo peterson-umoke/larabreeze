@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes For Users
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/auth/user.php';
-require __DIR__ . '/auth/admin.php';
-require __DIR__ . '/web/admin.php';
-require __DIR__ . '/web/user.php';
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
