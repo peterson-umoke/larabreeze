@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class GuestLayout extends Component
+class AdminLayout extends Component
 {
     /**
      * Get the view / contents that represents the component.
@@ -16,6 +16,6 @@ class GuestLayout extends Component
      */
     public function render()
     {
-        return view('layouts.guest');
+        return view('layouts.admin');
     }
 }
