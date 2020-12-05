@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('user.')->group(function () {
+//Route::name('user.')->group(function () {
     require __DIR__ . '/auth/user.auth.php';
     require __DIR__ . '/web/user.web.php';
-});
+//});
 Route::name('admin.')->prefix('admin')->group(function () {
     require __DIR__ . '/auth/admin.auth.php';
     require __DIR__ . '/web/admin.web.php';

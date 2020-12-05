@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -38,7 +39,7 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-        Auth::guard('admin')->login($user = User::create([
+        Auth::guard('admin')->login($user = Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

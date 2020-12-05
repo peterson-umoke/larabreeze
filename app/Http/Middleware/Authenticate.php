@@ -14,16 +14,15 @@ class Authenticate extends Middleware
      * @param mixed ...$guards
      * @return string|null
      */
-    protected function redirectTo($request, ... $guards)
+    protected function redirectTo($request, ...$guards)
     {
-        dd($guards);
         if (!$request->expectsJson()) {
-            switch (current($guards)):
-                case 'admin':
-                    return route('admin.login');
-                default:
-                    return route('login');
-            endswitch;
+            $i = current($guards);
+            if ($i == 'admin') {
+                return route('admin.login');
+            } elseif ($i == 'web') {
+                return route('login');
+            }
         }
     }
 }

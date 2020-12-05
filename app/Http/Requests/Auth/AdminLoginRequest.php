@@ -43,9 +43,13 @@ class AdminLoginRequest extends FormRequest
      */
     public function authenticate()
     {
+        if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
+            dd("skdfsdf");
+        }
+
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::guard('admin')->attempt($this->only('email', 'password'), $this->filled('remember'))) {
+        if (!Auth::guard('admin')->attempt($this->only('email', 'password'), $this->filled('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -65,7 +69,7 @@ class AdminLoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited()
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -88,6 +92,6 @@ class AdminLoginRequest extends FormRequest
      */
     public function throttleKey()
     {
-        return Str::lower($this->input('email')).'|'.$this->ip();
+        return Str::lower($this->input('email')) . '|' . $this->ip();
     }
 }
