@@ -40,6 +40,6 @@ class ConfirmablePasswordController extends Controller
 
         $request->user('admin')->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(RouteServiceProvider::HOME_ADMIN);
+        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
     }
 }

@@ -25,9 +25,9 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 switch ($guard):
                     case 'admin':
-                        return redirect(RouteServiceProvider::HOME_ADMIN);
+                        return redirect(RouteServiceProvider::ADMIN_HOME);
                     default:
-                        return redirect(RouteServiceProvider::HOME);
+                        return redirect(RouteServiceProvider::USER_HOME);
                 endswitch;
             }
         }
