@@ -1,10 +1,8 @@
 require('./bootstrap');
-
-// require('alpinejs');
-
 require('moment');
-
-import { App, plugin } from '@inertiajs/inertia-vue'
+// require('alpinejs');
+import {InertiaProgress} from "@inertiajs/progress";
+import {App, plugin} from '@inertiajs/inertia-vue'
 import Vue from 'vue'
 
 Vue.use(plugin)
@@ -15,8 +13,8 @@ new Vue({
     render: h => h(App, {
         props: {
             initialPage: JSON.parse(el.dataset.page),
-            resolveComponent: name => require(`./Pages/${name}`).default,
+            resolveComponent: name => import(`./Pages/${name}`).then(module => module.default),
         },
     }),
 }).$mount(el)
-
+InertiaProgress.init()
