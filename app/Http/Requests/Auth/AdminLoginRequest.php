@@ -43,10 +43,6 @@ class AdminLoginRequest extends FormRequest
      */
     public function authenticate()
     {
-        if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
-            dd("skdfsdf");
-        }
-
         $this->ensureIsNotRateLimited();
 
         if (!Auth::guard('admin')->attempt($this->only('email', 'password'), $this->filled('remember'))) {
