@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin.welcome');
 });
+
+Route::get("index", [AdminController::class, 'index'])->name('index');
+
+Route::get("edit/{admin}", function () {
+    echo "this is show";
+})->name('edit');
+
+Route::get("create", function () {
+    echo "this is edit";
+})->name('create');
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
