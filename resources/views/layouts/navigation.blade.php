@@ -38,6 +38,7 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        sdfsdf
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
