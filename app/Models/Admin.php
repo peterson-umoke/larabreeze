@@ -50,10 +50,10 @@ class Admin extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
-//    public function sendEmailVerificationNotification()
-//    {
-//        $this->notify(EmailVerificationNotification::class);
-//    }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new EmailVerificationNotification());
+    }
 
 
 }
